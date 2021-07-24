@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+    <header>
+		<h1>Remote Jobs</h1>
+        <h4>218 Python jobs found.</h4>
+        <a href="/">Export to CSV</a>
+        <h5><a href="/">← Go back</a></h5>
+    </header>
+
+    <main>
+        {% for result in results %}
+            <div>
+                <h2>{{result.title|safe}}</h2>
+                <h3>{{result.company|safe}}</h3>
+                <h3><a href="{{result.href}}" target="_blank">Apply</a></h3>
+                <hr>
+            </div>
+    </main>
+    
+
+</body>
+
+</html>

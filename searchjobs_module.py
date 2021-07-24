@@ -20,25 +20,26 @@ def searchjobs(term):
     for url in urls:
         html = requests.get(url, headers=headers).text
         soup = BeautifulSoup(html)
-        
+
         if url_sof in url:
-            dflexs = soup.find("div", {"class": "listResults"}).find_all(
-                "div", {"class": "d-flex"})
-            for dflex in dflexs:
-                try:
-                    slink = dflex.find(
-                        "a", {"class": "s-link stretched-link"})
-                    title = slink.text
-                    href = url_sof + slink.get("href")
-                    company = dflex.find(
-                        "h3", {"class": "fc-black-700 fs-body1 mb4"}).find("span").text.rstrip("\n ")
-                    joblist.append(
-                        {"title": title, "href": href, "company": company})
-                except:
-                    pass
+            print(url)
+            # dflexs = soup.find("div", {"class": "listResults"}).find_all(
+            #     "div", {"class": "d-flex"})
+            # for dflex in dflexs:
+            #     try:
+            #         slink = dflex.find(
+            #             "a", {"class": "s-link stretched-link"})
+            #         title = slink.text
+            #         href = url_sof + slink.get("href")
+            #         company = dflex.find(
+            #             "h3", {"class": "fc-black-700 fs-body1 mb4"}).find("span").text.rstrip("\n ")
+            #         joblist.append(
+            #             {"title": title, "href": href, "company": company})
+            #     except:
+            #         pass
 
         # elif url_wwr in url:
-            
+
         #     jobs = soup.find_all("section", {"class": "jobs"})
         #     for job in jobs:
         #         lis = job.find_all(

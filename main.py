@@ -8,8 +8,9 @@ https://remoteok.io/remote-dev+python-jobs
 Good luck!
 """
 
+from filewrite_module import write_file
 from searchjobs_module import searchjobs
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, send_file
 
 app = Flask("Day-Thirteen-and-Fourteen")
 db = {}
@@ -22,13 +23,30 @@ def index():
 def search():
     term = request.args.get("term")
 
-    urls = [f"https://stackoverflow.com/jobs?r=true&q={term}",
-    f"https://weworkremotely.com/remote-jobs/search?term={term}",
-    f"https://remoteok.io/remote-dev+{term}-jobs"]
-
     if not db.get(term):
-        db[term] = searchjobs(urls)
+        db[term] = searchjobs(term)
     
-    return render_template("search.html", results=db[term])
+    return render_template("search.html",term=term, len_term=len(db[term]),results=db[term])
+
+@app.route("/export")
+def export():
+    
+    try:
+        term = request.args.get("term")
+        if not term:
+            raise Exception()
+        term = term.lower()
+        if not db.get(term):
+            raise Exception()
+        write_file(term,db[term])
+        # return send_file(term + ".csv")
+        # raise Exception()
+    except:
+        return redirect("/")
+    # if not db.get(term):
+    #     db[term] = searchjobs(term)
+    
+    # return render_template("search.html",term=term, len_term=len(db[term]),results=db[term])
+
 
 app.run(host="0.0.0.0")

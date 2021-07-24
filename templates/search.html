@@ -8,8 +8,8 @@
 <body>
     <header>
 		<h1>Remote Jobs</h1>
-        <h4>218 Python jobs found.</h4>
-        <a href="/">Export to CSV</a>
+        <h4>{{ len_term }} {{ term }} jobs found.</h4>
+        <a href="/export?term={{ term }}">Export to CSV</a>
         <h5><a href="/">← Go back</a></h5>
     </header>
 
@@ -18,7 +18,7 @@
             <div>
                 <h2>{{result.title|safe}}</h2>
                 <h3>{{result.company|safe}}</h3>
-                <h3><a href="{{result.href}}" target="_blank">Apply</a></h3>
+                <h3><a href="{{result.link}}" target="_blank">Apply</a></h3>
                 <hr>
             </div>
         {% endfor %}

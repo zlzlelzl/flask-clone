@@ -22,57 +22,56 @@ def searchjobs(term):
         soup = BeautifulSoup(html)
 
         if url_sof in url:
-            print(url)
-            # dflexs = soup.find("div", {"class": "listResults"}).find_all(
-            #     "div", {"class": "d-flex"})
-            # for dflex in dflexs:
-            #     try:
-            #         slink = dflex.find(
-            #             "a", {"class": "s-link stretched-link"})
-            #         title = slink.text
-            #         href = url_sof + slink.get("href")
-            #         company = dflex.find(
-            #             "h3", {"class": "fc-black-700 fs-body1 mb4"}).find("span").text.rstrip("\n ")
-            #         joblist.append(
-            #             {"title": title, "href": href, "company": company})
-            #     except:
-            #         pass
+            dflexs = soup.find("div", {"class": "listResults"}).find_all(
+                "div", {"class": "d-flex"})
+            for dflex in dflexs:
+                try:
+                    slink = dflex.find(
+                        "a", {"class": "s-link stretched-link"})
+                    title = slink.text
+                    link = url_sof + slink.get("href")
+                    company = dflex.find(
+                        "h3", {"class": "fc-black-700 fs-body1 mb4"}).find("span").text.rstrip("\n ")
+                    joblist.append(
+                        {"title": title, "link": link, "company": company})
+                except:
+                    pass
 
-        # elif url_wwr in url:
+        elif url_wwr in url:
 
-        #     jobs = soup.find_all("section", {"class": "jobs"})
-        #     for job in jobs:
-        #         lis = job.find_all(
-        #             "li")
-        #         for li in lis:
-        #             try:
-        #                 a = li.find_all(
-        #                     "a")[1]
-        #                 href = url_wwr + a.get("href")
-        #                 company = a.find(
-        #                     "span", {"class": "company"}).text
-        #                 title = a.find(
-        #                     "span", {"class": "title"}).text
-        #                 joblist.append(
-        #                     {"title": title, "href": href, "company": company})
-        #             except:
-        #                 pass
+            jobs = soup.find_all("section", {"class": "jobs"})
+            for job in jobs:
+                lis = job.find_all(
+                    "li")
+                for li in lis:
+                    try:
+                        a = li.find_all(
+                            "a")[1]
+                        link = url_wwr + a.get("href")
+                        company = a.find(
+                            "span", {"class": "company"}).text
+                        title = a.find(
+                            "span", {"class": "title"}).text
+                        joblist.append(
+                            {"title": title, "link": link, "company": company})
+                    except:
+                        pass
 
-        # elif url_ro in url:
-        #     tbodys = soup.find("div", {"class", "container"}).find_all("tbody")
-        #     for tbody in tbodys:
+        elif url_ro in url:
+            tbodys = soup.find("div", {"class", "container"}).find_all("tbody")
+            for tbody in tbodys:
 
-        #         trs = tbody.find_all("tr")
-        #         for tr in trs:
-        #             try:
-        #                 preventLink = tr.find_all(
-        #                     "a", {"class", "preventLink"})
-        #                 company = preventLink[1].text
-        #                 title = preventLink[2].text
-        #                 href = preventLink[2].get("href")
-        #                 joblist.append(
-        #                     {"title": title, "href": href, "company": company})
-        #             except:
-        #                 pass
+                trs = tbody.find_all("tr")
+                for tr in trs:
+                    try:
+                        preventLink = tr.find_all(
+                            "a", {"class", "preventLink"})
+                        company = preventLink[1].text
+                        title = preventLink[2].text
+                        link = url_ro + preventLink[2].get("href")
+                        joblist.append(
+                            {"title": title, "link": link, "company": company})
+                    except:
+                        pass
 
     return joblist

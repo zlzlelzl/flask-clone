@@ -1,18 +1,14 @@
-"""
-These are the URLs that will give you remote jobs for the word 'python'
-
-https://stackoverflow.com/jobs?r=true&q=python
-https://weworkremotely.com/remote-jobs/search?term=python
-https://remoteok.io/remote-dev+python-jobs
-
-Good luck!
-"""
-
 from filewrite_module import write_file
 from searchjobs_module import searchjobs
 from flask import Flask, render_template, request, redirect, send_file
+import os
+from os.path import dirname, join
 
-app = Flask("Day-Thirteen-and-Fourteen")
+app = Flask(__name__)
+app.config.from_mapping(
+    SECRET_KEY="dev",
+    DATABASE=join(dirname(dirname(__file__)), "db.sqlite3"),
+)
 db = {}
 
 
@@ -33,7 +29,6 @@ def search():
 
 @app.route("/export")
 def export():
-
     try:
         term = request.args.get("term")
         if not term:

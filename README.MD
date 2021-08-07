@@ -5,7 +5,15 @@
 ```powershell
 # powershell
 (pip install poetry) -and (poetry install)
-(explorer http://localhost:5000/) -or (poetry run flask run)
+poetry run flask run
+```
+
+```bash
+# bash
+# 환경변수까지 자동으로 지정
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+poetry install
+poetry run flask run
 ```
 
 ## done
@@ -13,6 +21,7 @@
 - flask 클론코딩
 - poetry 연동
 - .flaskenv 연동
+- ec2 linux환경으로 실행가능하게 만들기
 
 ## todo
 

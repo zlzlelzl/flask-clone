@@ -10,9 +10,7 @@ poetry run flask run
 
 ```bash
 # bash
-# 환경변수까지 자동으로 지정
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
-poetry install
+pip istall poerty && poetry install
 poetry run flask run
 ```
 

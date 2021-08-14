@@ -24,6 +24,10 @@ poetry run flask run
 ## todo
 
 - db 연동(csv -> redis)
-- 리팩토링(flask 컨벤션으로 모듈화)
 - 캐시서버를 따로 만들어서 api로 캐시데이터 업데이트하기
 - github action으로 배포자동화
+- 리팩토링(flask 컨벤션으로 모듈화)
+
+## doing
+
+- import redis

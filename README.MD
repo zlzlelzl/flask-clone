@@ -3,7 +3,7 @@
 ## how to run
 
 ```bash
-docker
+docker-compose up
 pip istall poerty && poetry install
 poetry run flask run
 ```

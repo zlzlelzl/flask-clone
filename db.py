@@ -1,23 +1,30 @@
 import redis
 
-try:
 
-    conn = redis.StrictRedis(
+def db_connect(host="localhost", port="6379"):  # default port = 6379
 
-        host='192.168.10.100',
+    try:
+        conn = redis.StrictRedis(
+            host=host,
+            port=port,
+            db=0)
 
-        port=6379,
+    except Exception as ex:
 
-        db=2)
+        print('Error:', ex)
 
-    print('Set Record:', conn.set("test", "Nice to meet you"))
+    return conn
 
-    print('Get Record:', conn.get("test"))
 
-    print('Delete Record:', conn.delete("test"))
+def db_test(conn):
+    try:
+        conn.set("test", "success")
+        print(conn.get("test"))
+    except Exception as ex:
 
-    print('Get Deleted Record:', conn.get("test"))
+        print('Error:', ex)
 
-except Exception as ex:
 
-    print('Error:', ex)
+if __name__ == "__main__":
+    conn = db_connect()
+    db_test(conn)

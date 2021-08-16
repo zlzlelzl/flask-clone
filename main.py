@@ -3,13 +3,17 @@ from searchjobs_module import searchjobs
 from flask import Flask, render_template, request, redirect, send_file
 import os
 from os.path import dirname, join
+from db import db_connect
 
 app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY="dev",
-    DATABASE=join(dirname(dirname(__file__)), "db.sqlite3"),
+    # DATABASE=join(dirname(dirname(__file__)), "db.sqlite3"),
 )
-db = {}
+
+conn = db_connect()
+
+cache = {}
 
 
 @app.route("/")
@@ -21,10 +25,17 @@ def index():
 def search():
     term = request.args.get("term")
 
-    if not db.get(term):
-        db[term] = searchjobs(term)
+    # try:
+    #     cache = conn.get(term)
+    # except:
+    #     pass
 
-    return render_template("search.html", term=term, len_term=len(db[term]), results=db[term])
+    if not cache.get(term):
+        cache[term] = searchjobs(term)
+        # conn.set(term, cache[term])
+    # print(cache[term])
+
+    return render_template("search.html", term=term, len_term=len(cache[term]), results=cache[term])
 
 
 @app.route("/export")
@@ -34,9 +45,9 @@ def export():
         if not term:
             raise Exception()
         term = term.lower()
-        if not db.get(term):
+        if not cache.get(term):
             raise Exception()
-        write_file(term, db[term])
+        # write_file(term, cache[term])
         return send_file(term + ".csv")
 
     except:

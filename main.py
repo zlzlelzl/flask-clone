@@ -6,10 +6,6 @@ from os.path import dirname, join
 from db import db_connect
 
 app = Flask(__name__)
-app.config.from_mapping(
-    SECRET_KEY="dev",
-    # DATABASE=join(dirname(dirname(__file__)), "db.sqlite3"),
-)
 
 conn = db_connect()
 

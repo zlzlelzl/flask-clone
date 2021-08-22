@@ -1,4 +1,10 @@
-# flask 클론 코딩
+# flask toy
+
+flask 직업 찾기 클론코딩, 이것저것 붙여보기
+
+## architecture
+
+<img src="./img.svg">
 
 ## how to run
 
@@ -23,7 +29,6 @@ poetry run flask run
 ## todo
 
 - db 연동. csv -> redis
-- 아키텍쳐 만들기(수정가능하게)
 - 테스트 코드 작성
 - 리팩토링(flask 컨벤션으로 모듈화)
 - CI툴 사용해보기
@@ -35,6 +40,7 @@ poetry run flask run
 
 - db 연동. csv -> redis
 - 테스트 코드 작성
+- 아키텍쳐 만들기(vecta.io -> svg -> md)
 
 ## organize
 

@@ -16,7 +16,19 @@ poetry run flask run
 
 ## issue
 
-- 저장했을때 파일명이 아니라 export로 저장됨
+- 
+
+## todo
+
+- 리팩토링(flask 컨벤션으로 모듈화)
+- CI툴 사용해보기
+- github action으로 배포자동화
+- celery로 비동기 db 갱신
+- db서버 따로 만들고 API로 통신(RPC 알아보기)
+
+## doing
+
+- 
 
 ## done
 
@@ -24,24 +36,9 @@ poetry run flask run
 - poetry 연동
 - .flaskenv 연동
 - ec2 linux환경으로 실행가능하게 만들기
+- redis로 캐싱
 
+## maintenance
 
-## todo
-
-- db 연동. csv -> redis
-- 테스트 코드 작성
-- 리팩토링(flask 컨벤션으로 모듈화)
-- CI툴 사용해보기
-- github action으로 배포자동화
-- celery로 비동기 db 갱신
-- db서버 따로 만들고 API로 통신
-
-## doing
-
-- db 연동. csv -> redis
-- 테스트 코드 작성
 - 아키텍쳐 만들기(vecta.io -> svg -> md)
-
-## organize
-
-- 
+- 테스트 코드 작성

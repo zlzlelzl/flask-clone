@@ -1,4 +1,5 @@
 import redis
+import json
 
 
 def db_connect(host="localhost", port="6379"):  # default port = 6379
@@ -18,8 +19,8 @@ def db_connect(host="localhost", port="6379"):  # default port = 6379
 
 def db_test(conn):
     try:
-        conn.set("test", "success")
-        print(conn.get("test"))
+        conn.set("test", json.dumps(["success"]))
+        print(json.loads(conn.get("test")))
     except Exception as ex:
 
         print('Error:', ex)

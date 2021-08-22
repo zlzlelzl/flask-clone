@@ -3,3 +3,4 @@ def write_file(term, joblist):
         f.write("Title,Company,Link\n")
         for j in joblist:
             f.write(f"\"{j['title']}\",\"{j['company']}\",\"{j['link']}\"\n")
+    return 0

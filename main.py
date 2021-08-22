@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, send_file
 import os
 from os.path import dirname, join
 from db import db_connect
+import json
 
 app = Flask(__name__)
 
@@ -21,15 +22,14 @@ def index():
 def search():
     term = request.args.get("term")
 
-    # try:
-    #     cache = conn.get(term)
-    # except:
-    #     pass
+    try:
+        cache[term] = json.loads(conn.get(term))
+    except:
+        pass
 
     if not cache.get(term):
         cache[term] = searchjobs(term)
-        # conn.set(term, cache[term])
-    # print(cache[term])
+        conn.set(term, json.dumps(cache[term]))
 
     return render_template("search.html", term=term, len_term=len(cache[term]), results=cache[term])
 
@@ -41,13 +41,20 @@ def export():
         if not term:
             raise Exception()
         term = term.lower()
+
         if not cache.get(term):
             raise Exception()
-        # write_file(term, cache[term])
-        return send_file(term + ".csv")
+
+        write_file(term, cache[term])
+        # return send_file("11.txt", "w")
+
+        # send_file(term + ".csv")
+        # return send_file(term + ".csv")
 
     except:
         return redirect("/")
+
+    return render_template("search.html", term=term, len_term=len(cache[term]), results=cache[term])
 
 
 app.run(host="0.0.0.0")

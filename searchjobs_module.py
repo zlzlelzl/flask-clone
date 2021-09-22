@@ -1,10 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
+from celery import Celery
+import time
+
+celery = Celery("task", BROKER_URL="redis://localhost:6379",
+                CELERY_RESULT_BACKEND='redis://localhost:6379/0')
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'}
 
 
+@celery.task()
 def searchjobs(term):
 
     url_sof = "https://stackoverflow.com"
@@ -74,4 +80,12 @@ def searchjobs(term):
                     except:
                         pass
 
+    # celery 테스트용 sleep
+    time.sleep(10)
+
     return joblist
+
+
+if __name__ == "__main__":
+    searchjobs.apply_async("python")
+    print(1)

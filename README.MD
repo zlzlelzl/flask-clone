@@ -24,7 +24,7 @@ poetry run flask run
 - CI툴 사용해보기
 - github action으로 배포자동화
 - celery로 비동기 db 갱신
-- db서버 따로 만들고 API로 통신(RPC 알아보기)
+- db서버 따로 만들고 API로 통신(RTC 알아보기)
 - swagger로 api관리, README.MD에 표시
 
 ## doing

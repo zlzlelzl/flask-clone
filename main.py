@@ -19,10 +19,10 @@ conn = db_connect()
 cache = {}
 
 
-@celery.task
-def add(x, y):
-    time.sleep(5)
-    return x + y
+# @celery.task
+# def add(x, y):
+#     time.sleep(5)
+#     return x + y
 
 
 @ app.route("/")
@@ -42,8 +42,6 @@ def search():
     if not cache.get(term):  # 비동기 갱신
         #     cache[term] = searchjobs.apply_async(term)
         task = searchjobs.delay(term).then
-        print(task)
-        time.sleep(10)
         print(task)
         # conn.set(term, json.dumps(searchjobs(term)))
 

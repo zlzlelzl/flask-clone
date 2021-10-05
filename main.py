@@ -71,4 +71,4 @@ def export():
     return render_template("search.html", term=term, len_term=len(cache[term]), results=cache[term])
 
 
-app.run(host="0.0.0.0")
+app.run()

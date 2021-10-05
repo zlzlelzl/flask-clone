@@ -10,8 +10,6 @@ flask 직업 찾기 클론코딩, 이것저것 붙여보기
 
 ```bash
 docker-compose up
-pip istall poerty && poetry install
-poetry run flask run
 ```
 
 ## issue
@@ -33,8 +31,7 @@ poetry run flask run
 ## done
 
 - flask 직업 찾기 클론코딩
-- poetry 연동
-- .flaskenv 연동
+- poetry -> docker
 - ec2 linux환경으로 실행가능하게 만들기
 - redis로 캐싱
 

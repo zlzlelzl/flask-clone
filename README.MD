@@ -18,7 +18,6 @@ docker-compose up
 
 ## todo
 
-- 리팩토링(flask 컨벤션으로 모듈화)
 - CI툴 사용해보기
 - github action으로 배포자동화
 - db서버 따로 만들고 API로 통신(RPC 알아보기)

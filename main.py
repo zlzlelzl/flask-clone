@@ -14,12 +14,12 @@ conn = db_connect()
 cache = {}
 
 
-@ app.route("/")
+@app.route("/")
 def index():
     return render_template("index.html")
 
 
-@ app.route("/search")
+@app.route("/search")
 def search():
     term = request.args.get("term")
 
@@ -35,7 +35,7 @@ def search():
     return render_template("search.html", term=term, len_term=len(cache[term]), results=cache[term])
 
 
-@ app.route("/export")
+@app.route("/export")
 def export():
     try:
         term = request.args.get("term")

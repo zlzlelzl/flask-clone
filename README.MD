@@ -18,6 +18,7 @@ docker-compose up
 
 ## todo
 
+
 - CI툴 사용해보기
 - github action으로 배포자동화
 - db서버 따로 만들고 API로 통신(RPC 알아보기)
@@ -25,6 +26,7 @@ docker-compose up
 
 ## doing
 
+- LRU캐시
 - celery로 비동기 db 갱신
 
 ### done
@@ -36,11 +38,11 @@ docker-compose up
 
 ## issue
 
-- requirements pip 버전 안맞음
+- 
 
 ### issuelog
 
-- 
+- requirements pip 버전 안맞음 -> venv & pip freeze(계속 안맞으면 자동화 고려)
 
 ## maintenance
 

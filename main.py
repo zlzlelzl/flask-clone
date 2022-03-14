@@ -29,8 +29,9 @@ def search():
         cache[term] = {}
 
     if not cache.get(term):
-        cache[term] = searchjobs.apply_async(term)
-        conn.set(term, json.dumps(searchjobs(term)))
+        pass
+        # cache[term] = searchjobs(term)
+        # conn.set(term, json.dumps(searchjobs(term)))
 
     return render_template("search.html", term=term, len_term=len(cache[term]), results=cache[term])
 

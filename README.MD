@@ -27,12 +27,20 @@ docker-compose up
 
 - celery로 비동기 db 갱신
 
-## done
+### done
 
 - flask 직업 찾기 클론코딩
 - poetry -> docker
 - ec2 linux환경으로 실행가능하게 만들기
 - redis로 캐싱
+
+## issue
+
+- requirements pip 버전 안맞음
+
+### issuelog
+
+- 
 
 ## maintenance
 

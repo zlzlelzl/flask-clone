@@ -26,7 +26,6 @@ docker-compose up
 
 ## doing
 
-- LRU캐시
 - celery로 비동기 db 갱신
 
 ### done
@@ -35,6 +34,7 @@ docker-compose up
 - poetry -> docker
 - ec2 linux환경으로 실행가능하게 만들기
 - redis로 캐싱
+- LRU캐시 구현
 
 ## issue
 

@@ -1,3 +1,6 @@
+
+# head의 다음 간선에 연결하여 우선 순위를 높임
+# size를 넘어가면 tail에서 가장 가까운 노드를 삭제
 class Node:
     def __init__(self,key, value):
         self.key = key
@@ -6,7 +9,7 @@ class Node:
         self.prev = None
         
 class Cache:
-    def __init__(self, max_cache_size:int = 2):
+    def __init__(self, max_cache_size:int):
         self.head = None
         self.tail = None
         self.size = 0
@@ -47,11 +50,21 @@ class Cache:
             self.tail.prev.prev.next = self.tail
             self.tail.prev = self.tail.prev.prev
             del self.cache[key]
+            self.size -= 1
               
         return True
     
+    def get(self, key):
+        if not self.cache.get(key):
+            return None
+        
+        return self.cache.get(key).value
+    
     def cache_list(self) -> bool:
-        print(self.cache)
+        temp = self.head.next
+        while temp.next:
+            print(temp.key, end=" ")
+            temp = temp.next
         return True
     
 if __name__ == "__main__":
@@ -64,5 +77,6 @@ if __name__ == "__main__":
     cache.put("foo4",["baa3"])
     cache.put("foo5",["baa3"])
     cache.put("foo6",["baa3"])
+    print(cache.get("foo6"))
 
-    cache.cache_list()
+    # cache.cache_list()

@@ -18,7 +18,6 @@ docker-compose up
 
 ## todo
 
-
 - CI툴 사용해보기
 - github action으로 배포자동화
 - db서버 따로 만들고 API로 통신(RPC 알아보기)
@@ -38,7 +37,7 @@ docker-compose up
 
 ## issue
 
-- 
+- searchjobs함수 병목
 
 ### issuelog
 

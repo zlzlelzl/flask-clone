@@ -33,9 +33,11 @@ def search():
 
     if not cache.get(term):
         cache.put(term,searchjobs(term))
+    else: # 캐시 우선 순위 갱신
+        cache.put(term,cache.get(term))
         # conn.set(term, json.dumps(searchjobs(term)))
     
-    cache.cache_list()
+    # cache.cache_list()
  
     return render_template("search.html", term=term, len_term=len(cache.get(term)), results=cache.get(term))
 

@@ -37,7 +37,7 @@ docker-compose up
 
 ## issue
 
-- searchjobs함수 병목
+- 
 
 ### issuelog
 
